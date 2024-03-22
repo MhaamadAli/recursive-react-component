@@ -1,8 +1,12 @@
+import React from 'react';
 import './App.css';
 
-function App() {
+import CounterCards from './components/counterCards.jsx'
+
+const App = () => {
   return (
     <div className="App">
+      <CounterCards />
     </div>
   );
 }
