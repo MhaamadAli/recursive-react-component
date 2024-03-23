@@ -5,19 +5,17 @@ const Counter = ({ cardsList = { count: 1, children: [] }, onAddChild }) => {
   const [children, setChildren] = useState(cardsList.children || []);
 
   const increment = () => {
+    const newChild = { count: count + 1, children: [] };
     setCount(count + 1);
-    setChildren([...children, { count: count + 1, children: [] }]); 
+    setChildren([...children, newChild]); 
     if (onAddChild) {
-      onAddChild({ count: count + 1, children: [] });
+      onAddChild(newChild);
     }
   };
 
   const decrement = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+    setChildren(children.filter((child) => child.count!== count));
   };
-
   return (
     <div style={{ paddingLeft: 10 }}>
     <span>- {count}</span>
