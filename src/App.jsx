@@ -1,14 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
-import CounterCards from './components/counterCards.jsx'
+import Counter from './components/Counter.jsx'
 
-const App = () => {
+
+const App = ()=> {
+  const [allCards, setAllCards] = useState({ count: 1, children: [] });
+
+  const handleAddChild = (newChild) => {
+    setAllCards({ ...allCards, children: [...allCards.children, newChild] });
+  }; 
+
   return (
-    <div className="App">
-      <CounterCards />
+    <div>
+      <Counter cardsList={allCards} onAddChild={handleAddChild} />
     </div>
   );
 }
+
 
 export default App;
